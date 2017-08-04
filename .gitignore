@@ -1,0 +1,10 @@
+# IntellijIdea files
+.idea
+
+# Node Modules files
+node_modules
+
+# Orders files
+npm-debug.log
+*.map
+dist/
