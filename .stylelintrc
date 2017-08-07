@@ -4,7 +4,13 @@
     "unit-whitelist": [
       "px",
       "em",
-      "rem"
+      "rem",
+      "%",
+      "vh",
+      "vw",
+      "vmin",
+      "vmax",
+      "s"
     ]
   }
 }

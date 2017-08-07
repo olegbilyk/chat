@@ -9,7 +9,6 @@
     "build:prod": "NODE_ENV='production' ./node_modules/.bin/webpack -p",
     "build_watch": "./node_modules/.bin/webpack -w",
     "build_watch:prod": "NODE_ENV='productio./node_modules/.bin/webpack -p -w",
-    "pug_tmpl": "./node_modules/.bin/pug --client components/Chat/chat.pug --extension pug.js --name chat_tmpl",
     "eslint": "./node_modules/.bin/eslint ./src/**/*.js",
     "stylelint": "./node_modules/.bin/stylelint ./src/**/*.pcss"
   },

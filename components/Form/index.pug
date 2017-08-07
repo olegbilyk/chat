@@ -1,3 +1,6 @@
 form
-  textarea(name='message')
-  button(value='Отправить' type='submit')='submit'
+  textarea(required name='message' placeholder='Write a message...' rows="1" )
+  button.button.button_icon-send(value='submit' type='submit') Send
+
+    //svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24")
+      path(opacity=".4" d="M1.101 21.757L23.8 12.028 1.101 2.3l.011 7.912 13.623 1.816-13.623 1.817-.011 7.912z")

@@ -17,8 +17,13 @@ class Chat {
   }
 
   render () {
+    this.el.classList.add('chat')
     this.el.innerHTML = tmpl(this.data)
   }
+
+  // isMine () {
+  //   if (data.name === this.data.user)
+  // }
 
   /**
    * Добавить новое сообщение в чат
@@ -28,7 +33,8 @@ class Chat {
     this.data.messages.push({
       avatar: 'https://avatars2.githubusercontent.com/u/15265408?v=4&s=50',
       name: data.name || this.data.user,
-      isMine: data.name === this.data.user,
+      // isMine: data.name === this.data.user,
+      isMine: true,
       text: data.text,
       date: data.date || new Date()
     })

@@ -37,7 +37,6 @@ export default class AppChat {
     this.form.on('message', (event) => {
     // this.el.addEventListener('message', (event) => {
       let data = event.detail
-      console.log(data)
 
       this.chat.addMessage({
         text: data.message.value

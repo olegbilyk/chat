@@ -1,0 +1,47 @@
+:root {
+  --color-default: #1d2129;
+  --color-primary: #0084ff;
+  --color-border: #e4e4e4;
+}
+
+.form-chat {
+  padding: 10px 19px;
+
+  & form {
+    position: relative;
+    display: flex;
+    border-radius: 26px;
+    border: 1px solid var(--color-border);
+  }
+
+  & textarea {
+    flex-grow: 1;
+    max-height: 150px;
+    margin: 15px 0 15px 23px;
+    padding: 0;
+    resize: vertical;
+    border: none;
+    outline: none;
+    background-color: #fff;
+    font-family: inherit;
+  }
+
+  & .button {
+    padding: 10px 23px;
+    transition: all 0.2s ease;
+    border-top-right-radius: 26px;
+    border-bottom-right-radius: 26px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 500;
+    background-color: #fff;
+    color: var(--color-primary);
+
+    &:hover {
+      color: var(--color-default);
+    }
+  }
+}
+

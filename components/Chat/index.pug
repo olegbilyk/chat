@@ -1,15 +1,13 @@
-div.chat
-  div.chat__container
-    div.chat__header
-      h3='Добро пожаловать' + user
-    div.chat__body
-      if !messages.length
-        h3 Пока нет сообщений
-      each message in messages
-        div.message-box(class=message.isMine ? 'right-img' : 'left-img')
-          div.picture
-            img(src=message.avatar title='name of user')
-            span.time=message.date.toTimeString().split(' ')[0]
-          div.message
-            span=message.name
-            p=message.text
+div.chat__header
+  h3.title='Добро пожаловать ' + user
+div.chat__body
+  //if !messages.length
+    h3.no-message No messages here yet...
+  each message in messages
+    div.message(class=message.isMine ? 'message_user' : 'message_left-avatar')
+      //div.message__avatar
+      //  img(src=message.avatar alt='name of user')
+      div.message__box
+        //span.message__name=message.name
+        p.message__text=message.text
+        span.message__time=message.date.toTimeString().split(' ')[0]

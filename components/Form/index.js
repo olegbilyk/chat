@@ -1,5 +1,5 @@
 import tmpl from './index.pug'
-import './style.pcss'
+import styles from './style.pcss'
 
 /**
  * @typedef {Object} ChatMessage
@@ -15,7 +15,8 @@ class Form {
   }
 
   render () {
-    this.el.innerHTML = tmpl()
+    this.el.classList.add('form-chat')
+    this.el.innerHTML = tmpl(styles)
 
     this.formEl = this.el.querySelector('form')
   }
