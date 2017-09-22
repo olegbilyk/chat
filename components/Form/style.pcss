@@ -1,47 +1,82 @@
-:root {
-  --color-default: #1d2129;
-  --color-primary: #0084ff;
-  --color-border: #e4e4e4;
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: sans-serif;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
 }
 
-.form-chat {
-  padding: 10px 19px;
+.form {
+  position: relative;
 
-  & form {
+  &__title {
+    font-size: 10vw;
+    line-height: 1.6;
+    margin: 0;
+    text-align: center;
+  }
+
+  &__textarea-wrap {
     position: relative;
     display: flex;
-    border-radius: 26px;
-    border: 1px solid var(--color-border);
+    margin: 10px 20px 20px;
   }
 
-  & textarea {
+  &__textarea {
     flex-grow: 1;
+    min-height: 42px;
     max-height: 150px;
-    margin: 15px 0 15px 23px;
-    padding: 0;
+    padding: 10px 130px 10px 19px;
+    border-radius: 26px;
     resize: vertical;
-    border: none;
-    outline: none;
+    overflow: auto;
+    transition: all 0.2s ease;
+    border: 1px solid var(--color-border);
     background-color: #fff;
     font-family: inherit;
+
+    &:focus {
+      outline: none;
+      border: 1px solid var(--color-border_focus);
+    }
   }
 
-  & .button {
-    padding: 10px 23px;
+  &__button {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    margin-right: 23px;
+    margin-left: 23px;
     transition: all 0.2s ease;
-    border-top-right-radius: 26px;
-    border-bottom-right-radius: 26px;
     border: none;
     outline: none;
     cursor: pointer;
     font-family: inherit;
     font-weight: 500;
-    background-color: #fff;
+    background-color: transparent;
     color: var(--color-primary);
 
-    &:hover {
+    &:focus,
+    &:hover,
+    &:active {
       color: var(--color-default);
+    }
+
+    &:focus {
+      opacity: 0.8;
+    }
+
+    &:active {
+      opacity: 0.6;
     }
   }
 }
 
+.form--hidden {
+  opacity: 0;
+  visibility: hidden;
+}

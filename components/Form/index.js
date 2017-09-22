@@ -1,40 +1,31 @@
 import tmpl from './index.pug'
-import styles from './style.pcss'
+import './style.pcss'
 
-/**
- * @typedef {Object} ChatMessage
- *
- * @property {string} text - Текст сообщения
- * @property {string} email - Email отправителя сообщения
- */
 class Form {
-  constructor ({el}) {
+  constructor ({el, elClass, textTitle, textPlaceholder, textButton}) {
     this.el = el
+    this.elClass = elClass
+    this.data = {
+      textTitle,
+      textPlaceholder,
+      textButton
+    }
 
     this._initEvents()
   }
 
   render () {
-    this.el.classList.add('form-chat')
-    this.el.innerHTML = tmpl(styles)
-
+    this.el.classList.add('form', this.elClass)
+    this.el.innerHTML = tmpl(this.data)
     this.formEl = this.el.querySelector('form')
+
+    this._addAutoSize()
   }
 
-  /**
-   * Регистрация обработчика события
-   * @param  {string}   name - тип события
-   * @param  {function} cb
-   */
   on (name, cb) {
     this.el.addEventListener(name, cb)
   }
 
-  /**
-   * Вызов обработчиков событий
-   * @param  {string} name - тип события
-   * @param  {*} data
-   */
   trigger (name, data) {
     let event = new CustomEvent(name, {detail: data})
 
@@ -42,23 +33,12 @@ class Form {
   }
 
   reset () {
-    this.formEl.reset()
+    this.el.reset()
   }
 
   _initEvents () {
     this.el.addEventListener('submit', this._onSubmit.bind(this))
   }
-
-  // onSubmit (cb) {
-  //   this._submitCallback = cb
-  // }
-
-  // _onSubmit (event) {
-  // event.preventDefault()
-  // let formData = this._getFormData()
-  //
-  // this._submitCallback(formData)
-  // }
 
   _onSubmit (event) {
     event.preventDefault()
@@ -81,6 +61,19 @@ class Form {
     })
 
     return formData
+  }
+
+  _addAutoSize () {
+    [...this._getInputs()].forEach(input => {
+      input.addEventListener('keydown', this._initEventsAutoSize)
+    })
+  }
+
+  _initEventsAutoSize () {
+    setTimeout(() => {
+      this.style.cssText = 'height: auto;'
+      this.style.cssText = 'height:' + this.scrollHeight + 'px'
+    }, 4)
   }
 }
 

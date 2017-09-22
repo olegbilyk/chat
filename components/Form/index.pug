@@ -1,6 +1,6 @@
-form
-  textarea(required name='message' placeholder='Write a message...' rows="1" )
-  button.button.button_icon-send(value='submit' type='submit') Send
+if !!textTitle
+  h3.form__title=textTitle
 
-    //svg(xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24")
-      path(opacity=".4" d="M1.101 21.757L23.8 12.028 1.101 2.3l.011 7.912 13.623 1.816-13.623 1.817-.011 7.912z")
+.form__textarea-wrap
+  textarea.form__textarea(required autofocus name='message' placeholder=textPlaceholder rows="1")
+  button.button.form__button(value='submit' type='submit')=textButton

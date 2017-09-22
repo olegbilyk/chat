@@ -1,6 +1,13 @@
 module.exports = {
   plugins: [
-    require('postcss-cssnext')({browsers: ['last 3 versions']})
-    // require("stylelint"),
+    require('postcss-cssnext')({
+      features: {
+        customProperties: false
+      }
+    }),
+    require('postcss-inline-svg'),
+    require('cssnano')({
+      preset: 'default'
+    })
   ]
 }

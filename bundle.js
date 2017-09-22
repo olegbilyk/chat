@@ -1,1 +1,920 @@
-!function(e){function t(a){if(n[a])return n[a].exports;var r=n[a]={i:a,l:!1,exports:{}};return e[a].call(r.exports,r,r.exports,t),r.l=!0,r.exports}var n={};t.m=e,t.c=n,t.i=function(e){return e},t.d=function(e,n,a){t.o(e,n)||Object.defineProperty(e,n,{configurable:!1,enumerable:!0,get:a})},t.n=function(e){var n=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(n,"a",n),n},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p="",t(t.s=4)}([function(e,t,n){"use strict";function a(e,t){if(1===arguments.length){for(var n=e[0],r=1;r<e.length;r++)n=a(n,e[r]);return n}for(var s in t)if("class"===s){var i=e[s]||[];e[s]=(Array.isArray(i)?i:[i]).concat(t[s]||[])}else if("style"===s){var i=u(e[s]),o=u(t[s]);e[s]=i+o}else e[s]=t[s];return e}function r(e,t){for(var n,a="",r="",s=Array.isArray(t),u=0;u<e.length;u++)(n=i(e[u]))&&(s&&t[u]&&(n=c(n)),a=a+r+n,r=" ");return a}function s(e){var t="",n="";for(var a in e)a&&e[a]&&v.call(e,a)&&(t=t+n+a,n=" ");return t}function i(e,t){return Array.isArray(e)?r(e,t):e&&"object"==typeof e?s(e):e||""}function u(e){if(!e)return"";if("object"==typeof e){var t="";for(var n in e)v.call(e,n)&&(t=t+n+":"+e[n]+";");return t}return e+="",";"!==e[e.length-1]?e+";":e}function o(e,t,n,a){return!1!==t&&null!=t&&(t||"class"!==e&&"style"!==e)?!0===t?" "+(a?e:e+'="'+e+'"'):("function"==typeof t.toJSON&&(t=t.toJSON()),"string"==typeof t||(t=JSON.stringify(t),n||-1===t.indexOf('"'))?(n&&(t=c(t))," "+e+'="'+t+'"'):" "+e+"='"+t.replace(/'/g,"&#39;")+"'"):""}function l(e,t){var n="";for(var a in e)if(v.call(e,a)){var r=e[a];if("class"===a){r=i(r),n=o(a,r,!1,t)+n;continue}"style"===a&&(r=u(r)),n+=o(a,r,!1,t)}return n}function c(e){var t=""+e,n=d.exec(t);if(!n)return e;var a,r,s,i="";for(a=n.index,r=0;a<t.length;a++){switch(t.charCodeAt(a)){case 34:s="&quot;";break;case 38:s="&amp;";break;case 60:s="&lt;";break;case 62:s="&gt;";break;default:continue}r!==a&&(i+=t.substring(r,a)),r=a+1,i+=s}return r!==a?i+t.substring(r,a):i}function f(e,t,a,r){if(!(e instanceof Error))throw e;if(!("undefined"==typeof window&&t||r))throw e.message+=" on line "+a,e;try{r=r||n(10).readFileSync(t,"utf8")}catch(t){f(e,null,a)}var s=3,i=r.split("\n"),u=Math.max(a-s,0),o=Math.min(i.length,a+s),s=i.slice(u,o).map(function(e,t){var n=t+u+1;return(n==a?"  > ":"    ")+n+"| "+e}).join("\n");throw e.path=t,e.message=(t||"Pug")+":"+a+"\n"+s+"\n\n"+e.message,e}var v=Object.prototype.hasOwnProperty;t.merge=a,t.classes=i,t.style=u,t.attr=o,t.attrs=l;var d=/["&<>]/;t.escape=c,t.rethrow=f},function(e,t,n){"use strict";function a(e){return e&&e.__esModule?e:{default:e}}function r(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(t,"__esModule",{value:!0});var s=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(2),u=a(i),o=n(3),l=a(o);n(5);var c=function(){function e(t){var n=t.el;r(this,e),this.el=n,this._createComponents(),this._initMediate(),this.render()}return s(e,[{key:"render",value:function(){this.el.appendChild(this.chat.el),this.el.appendChild(this.form.el),this.chat.render(),this.form.render()}},{key:"_createComponents",value:function(){this.chat=new u.default({el:document.createElement("div"),data:{user:"Oleg",messages:[]}}),this.form=new l.default({el:document.createElement("div")})}},{key:"_initMediate",value:function(){var e=this;this.form.on("message",function(t){var n=t.detail;console.log(n),e.chat.addMessage({text:n.message.value}),e.chat.render(),e.form.reset()})}},{key:"addMessage",value:function(e){this.chat.addMessage(e)}}]),e}();t.default=c},function(e,t,n){"use strict";function a(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(t,"__esModule",{value:!0});var r=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),s=n(8),i=function(e){return e&&e.__esModule?e:{default:e}}(s);n(6);var u=function(){function e(t){var n=t.el,r=t.data,s=void 0===r?{user:"",messages:[]}:r;a(this,e),this.el=n,this.data=s}return r(e,[{key:"render",value:function(){this.el.classList.add("chat"),this.el.innerHTML=(0,i.default)(this.data)}},{key:"addMessage",value:function(e){this.data.messages.push({avatar:"https://avatars2.githubusercontent.com/u/15265408?v=4&s=50",name:e.name||this.data.user,isMine:!0,text:e.text,date:e.date||new Date})}},{key:"setUserName",value:function(e){this.data.user=e}}]),e}();t.default=u},function(e,t,n){"use strict";function a(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}function r(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(t,"__esModule",{value:!0});var s=function(){function e(e,t){for(var n=0;n<t.length;n++){var a=t[n];a.enumerable=a.enumerable||!1,a.configurable=!0,"value"in a&&(a.writable=!0),Object.defineProperty(e,a.key,a)}}return function(t,n,a){return n&&e(t.prototype,n),a&&e(t,a),t}}(),i=n(9),u=function(e){return e&&e.__esModule?e:{default:e}}(i);n(7);var o=function(){function e(t){var n=t.el;r(this,e),this.el=n,this._initEvents()}return s(e,[{key:"render",value:function(){this.el.classList.add("form-chat"),this.el.innerHTML=(0,u.default)(),this.formEl=this.el.querySelector("form")}},{key:"on",value:function(e,t){this.el.addEventListener(e,t)}},{key:"trigger",value:function(e,t){var n=new CustomEvent(e,{detail:t});this.el.dispatchEvent(n)}},{key:"reset",value:function(){this.formEl.reset()}},{key:"_initEvents",value:function(){this.el.addEventListener("submit",this._onSubmit.bind(this))}},{key:"_onSubmit",value:function(e){e.preventDefault();var t=this._getFormData();this.trigger("message",t)}},{key:"_getInputs",value:function(){return this.el.querySelectorAll("input, textarea")}},{key:"_getFormData",value:function(){var e={};return[].concat(a(this._getInputs())).forEach(function(t){e[t.name]={value:t.value}}),e}}]),e}();t.default=o},function(e,t,n){"use strict";var a=n(1);new(function(e){return e&&e.__esModule?e:{default:e}}(a).default)({el:document.getElementById("app")})},function(e,t){},function(e,t){},function(e,t){},function(e,t,n){function a(e){var t,n="",a=e||{};return function(e,a){n=n+'<div class="chat__container"><div class="chat__header"><h4 class="title">'+r.escape(null==(t="Добро пожаловать "+a)?"":t)+'</h4></div><div class="chat__body">',e.length||(n+='<h3 class="no-message">Пока нет сообщений</h3>'),function(){var a=e;if("number"==typeof a.length)for(var s=0,i=a.length;s<i;s++){var u=a[s];n=n+"<div"+r.attr("class",r.classes(["message",u.isMine?"message_user":"message_left-avatar"],[!1,!0]),!1,!0)+'>\x3c!--div.message__avatar--\x3e\x3c!--  img(src=message.avatar alt=\'name of user\')--\x3e<div class="message__box">\x3c!--span.message__name=message.name--\x3e<p class="message__text">'+r.escape(null==(t=u.text)?"":t)+'</p><span class="message__time">'+r.escape(null==(t=u.date.toTimeString().split(" ")[0])?"":t)+"</span></div></div>"}else{var i=0;for(var s in a){i++;var u=a[s];n=n+"<div"+r.attr("class",r.classes(["message",u.isMine?"message_user":"message_left-avatar"],[!1,!0]),!1,!0)+'>\x3c!--div.message__avatar--\x3e\x3c!--  img(src=message.avatar alt=\'name of user\')--\x3e<div class="message__box">\x3c!--span.message__name=message.name--\x3e<p class="message__text">'+r.escape(null==(t=u.text)?"":t)+'</p><span class="message__time">'+r.escape(null==(t=u.date.toTimeString().split(" ")[0])?"":t)+"</span></div></div>"}}}.call(this),n+="</div></div>"}.call(this,"messages"in a?a.messages:"undefined"!=typeof messages?messages:void 0,"user"in a?a.user:"undefined"!=typeof user?user:void 0),n}var r=n(0);e.exports=a},function(e,t,n){function a(e){var t="";return t+='<form><textarea name="message" placeholder="Type a message"></textarea><button class="button button_icon-send" value="Отправить" type="submit"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path opacity=".4" d="M1.101 21.757L23.8 12.028 1.101 2.3l.011 7.912 13.623 1.816-13.623 1.817-.011 7.912z"></path></svg></button></form>'}n(0);e.exports=a},function(e,t){}]);
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// identity function for calling harmony imports with the correct context
+/******/ 	__webpack_require__.i = function(value) { return value; };
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var pug_has_own_property = Object.prototype.hasOwnProperty;
+
+/**
+ * Merge two attribute objects giving precedence
+ * to values in object `b`. Classes are special-cased
+ * allowing for arrays and merging/joining appropriately
+ * resulting in a string.
+ *
+ * @param {Object} a
+ * @param {Object} b
+ * @return {Object} a
+ * @api private
+ */
+
+exports.merge = pug_merge;
+function pug_merge(a, b) {
+  if (arguments.length === 1) {
+    var attrs = a[0];
+    for (var i = 1; i < a.length; i++) {
+      attrs = pug_merge(attrs, a[i]);
+    }
+    return attrs;
+  }
+
+  for (var key in b) {
+    if (key === 'class') {
+      var valA = a[key] || [];
+      a[key] = (Array.isArray(valA) ? valA : [valA]).concat(b[key] || []);
+    } else if (key === 'style') {
+      var valA = pug_style(a[key]);
+      var valB = pug_style(b[key]);
+      a[key] = valA + valB;
+    } else {
+      a[key] = b[key];
+    }
+  }
+
+  return a;
+};
+
+/**
+ * Process array, object, or string as a string of classes delimited by a space.
+ *
+ * If `val` is an array, all members of it and its subarrays are counted as
+ * classes. If `escaping` is an array, then whether or not the item in `val` is
+ * escaped depends on the corresponding item in `escaping`. If `escaping` is
+ * not an array, no escaping is done.
+ *
+ * If `val` is an object, all the keys whose value is truthy are counted as
+ * classes. No escaping is done.
+ *
+ * If `val` is a string, it is counted as a class. No escaping is done.
+ *
+ * @param {(Array.<string>|Object.<string, boolean>|string)} val
+ * @param {?Array.<string>} escaping
+ * @return {String}
+ */
+exports.classes = pug_classes;
+function pug_classes_array(val, escaping) {
+  var classString = '', className, padding = '', escapeEnabled = Array.isArray(escaping);
+  for (var i = 0; i < val.length; i++) {
+    className = pug_classes(val[i]);
+    if (!className) continue;
+    escapeEnabled && escaping[i] && (className = pug_escape(className));
+    classString = classString + padding + className;
+    padding = ' ';
+  }
+  return classString;
+}
+function pug_classes_object(val) {
+  var classString = '', padding = '';
+  for (var key in val) {
+    if (key && val[key] && pug_has_own_property.call(val, key)) {
+      classString = classString + padding + key;
+      padding = ' ';
+    }
+  }
+  return classString;
+}
+function pug_classes(val, escaping) {
+  if (Array.isArray(val)) {
+    return pug_classes_array(val, escaping);
+  } else if (val && typeof val === 'object') {
+    return pug_classes_object(val);
+  } else {
+    return val || '';
+  }
+}
+
+/**
+ * Convert object or string to a string of CSS styles delimited by a semicolon.
+ *
+ * @param {(Object.<string, string>|string)} val
+ * @return {String}
+ */
+
+exports.style = pug_style;
+function pug_style(val) {
+  if (!val) return '';
+  if (typeof val === 'object') {
+    var out = '';
+    for (var style in val) {
+      /* istanbul ignore else */
+      if (pug_has_own_property.call(val, style)) {
+        out = out + style + ':' + val[style] + ';';
+      }
+    }
+    return out;
+  } else {
+    val += '';
+    if (val[val.length - 1] !== ';') 
+      return val + ';';
+    return val;
+  }
+};
+
+/**
+ * Render the given attribute.
+ *
+ * @param {String} key
+ * @param {String} val
+ * @param {Boolean} escaped
+ * @param {Boolean} terse
+ * @return {String}
+ */
+exports.attr = pug_attr;
+function pug_attr(key, val, escaped, terse) {
+  if (val === false || val == null || !val && (key === 'class' || key === 'style')) {
+    return '';
+  }
+  if (val === true) {
+    return ' ' + (terse ? key : key + '="' + key + '"');
+  }
+  if (typeof val.toJSON === 'function') {
+    val = val.toJSON();
+  }
+  if (typeof val !== 'string') {
+    val = JSON.stringify(val);
+    if (!escaped && val.indexOf('"') !== -1) {
+      return ' ' + key + '=\'' + val.replace(/'/g, '&#39;') + '\'';
+    }
+  }
+  if (escaped) val = pug_escape(val);
+  return ' ' + key + '="' + val + '"';
+};
+
+/**
+ * Render the given attributes object.
+ *
+ * @param {Object} obj
+ * @param {Object} terse whether to use HTML5 terse boolean attributes
+ * @return {String}
+ */
+exports.attrs = pug_attrs;
+function pug_attrs(obj, terse){
+  var attrs = '';
+
+  for (var key in obj) {
+    if (pug_has_own_property.call(obj, key)) {
+      var val = obj[key];
+
+      if ('class' === key) {
+        val = pug_classes(val);
+        attrs = pug_attr(key, val, false, terse) + attrs;
+        continue;
+      }
+      if ('style' === key) {
+        val = pug_style(val);
+      }
+      attrs += pug_attr(key, val, false, terse);
+    }
+  }
+
+  return attrs;
+};
+
+/**
+ * Escape the given string of `html`.
+ *
+ * @param {String} html
+ * @return {String}
+ * @api private
+ */
+
+var pug_match_html = /["&<>]/;
+exports.escape = pug_escape;
+function pug_escape(_html){
+  var html = '' + _html;
+  var regexResult = pug_match_html.exec(html);
+  if (!regexResult) return _html;
+
+  var result = '';
+  var i, lastIndex, escape;
+  for (i = regexResult.index, lastIndex = 0; i < html.length; i++) {
+    switch (html.charCodeAt(i)) {
+      case 34: escape = '&quot;'; break;
+      case 38: escape = '&amp;'; break;
+      case 60: escape = '&lt;'; break;
+      case 62: escape = '&gt;'; break;
+      default: continue;
+    }
+    if (lastIndex !== i) result += html.substring(lastIndex, i);
+    lastIndex = i + 1;
+    result += escape;
+  }
+  if (lastIndex !== i) return result + html.substring(lastIndex, i);
+  else return result;
+};
+
+/**
+ * Re-throw the given `err` in context to the
+ * the pug in `filename` at the given `lineno`.
+ *
+ * @param {Error} err
+ * @param {String} filename
+ * @param {String} lineno
+ * @param {String} str original source
+ * @api private
+ */
+
+exports.rethrow = pug_rethrow;
+function pug_rethrow(err, filename, lineno, str){
+  if (!(err instanceof Error)) throw err;
+  if ((typeof window != 'undefined' || !filename) && !str) {
+    err.message += ' on line ' + lineno;
+    throw err;
+  }
+  try {
+    str = str || __webpack_require__(11).readFileSync(filename, 'utf8')
+  } catch (ex) {
+    pug_rethrow(err, null, lineno)
+  }
+  var context = 3
+    , lines = str.split('\n')
+    , start = Math.max(lineno - context, 0)
+    , end = Math.min(lines.length, lineno + context);
+
+  // Error context
+  var context = lines.slice(start, end).map(function(line, i){
+    var curr = i + start + 1;
+    return (curr == lineno ? '  > ' : '    ')
+      + curr
+      + '| '
+      + line;
+  }).join('\n');
+
+  // Alter exception message
+  err.path = filename;
+  err.message = (filename || 'Pug') + ':' + lineno
+    + '\n' + context + '\n\n' + err.message;
+  throw err;
+};
+
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _Chat = __webpack_require__(2);
+
+var _Chat2 = _interopRequireDefault(_Chat);
+
+var _Form = __webpack_require__(3);
+
+var _Form2 = _interopRequireDefault(_Form);
+
+var _hatService = __webpack_require__(5);
+
+var _hatService2 = _interopRequireDefault(_hatService);
+
+__webpack_require__(6);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var chatService = new _hatService2.default({
+  baseUrl: 'https://oleg-bilyk-js-chat.firebaseio.com/messages.json'
+});
+
+var AppChat = function () {
+  function AppChat(_ref) {
+    var el = _ref.el;
+
+    _classCallCheck(this, AppChat);
+
+    this.el = el;
+
+    this._createComponents();
+    this._initMediate();
+    this.render();
+  }
+
+  _createClass(AppChat, [{
+    key: 'render',
+    value: function render() {
+      this.el.appendChild(this.formUser.el);
+      this.formUser.render();
+    }
+  }, {
+    key: '_createComponents',
+    value: function _createComponents() {
+      this.formUser = new _Form2.default({
+        el: document.createElement('form'),
+        textTitle: 'Welcome to chat',
+        elClass: 'app-chat__form',
+        textPlaceholder: 'Enter your name...',
+        textButton: 'Submit'
+      });
+
+      this.chat = new _Chat2.default({
+        el: document.createElement('div'),
+        chatService: chatService,
+        data: {
+          user: null,
+          messages: [],
+          loader: true
+        }
+      });
+
+      this.formChat = new _Form2.default({
+        el: document.createElement('form'),
+        elClass: 'form--chat',
+        textPlaceholder: 'Write a message...',
+        textButton: 'Send'
+      });
+    }
+  }, {
+    key: '_initMediate',
+    value: function _initMediate() {
+      var _this = this;
+
+      this.formUser.on('message', function (event) {
+        var data = event.detail;
+
+        _this.chat.setUserName(data.message.value);
+        _this.formUser.el.classList.add('form--hidden');
+
+        _this.el.appendChild(_this.chat.el);
+        _this.el.appendChild(_this.formChat.el);
+        _this.chat.render();
+        _this.formChat.render();
+      });
+
+      this.formChat.on('message', function (event) {
+        var data = event.detail;
+
+        data = {
+          text: data.message.value,
+          name: _this.chat.getUsername()
+        };
+
+        chatService.sendMessage(data, function () {
+          return null;
+        });
+
+        _this.chat.addOne(data);
+        _this.chat.render();
+        _this.formChat.reset();
+      });
+    }
+  }]);
+
+  return AppChat;
+}();
+
+exports.default = AppChat;
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _index = __webpack_require__(9);
+
+var _index2 = _interopRequireDefault(_index);
+
+__webpack_require__(7);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Chat = function () {
+  function Chat(_ref) {
+    var el = _ref.el,
+        chatService = _ref.chatService,
+        _ref$data = _ref.data,
+        data = _ref$data === undefined ? { user: '', messages: [], loader: true } : _ref$data;
+
+    _classCallCheck(this, Chat);
+
+    this.el = el;
+    this.data = data;
+    this.chatService = chatService;
+    this.el.classList.add('chat');
+
+    this._init();
+  }
+
+  _createClass(Chat, [{
+    key: 'render',
+    value: function render() {
+      this.el.innerHTML = (0, _index2.default)(this.getData());
+      this._scrollNewMessage();
+    }
+  }, {
+    key: '_scrollNewMessage',
+    value: function _scrollNewMessage() {
+      var el = this.el.querySelector('.chat__body');
+
+      if (el) {
+        if (el.lastElementChild) el.lastElementChild.scrollIntoView(false);
+      }
+    }
+  }, {
+    key: '_saveScrollTop',
+    value: function _saveScrollTop() {
+      var chatBox = this.el.querySelector('.chat__body');
+
+      if (chatBox) {
+        this._scrollTop = chatBox.scrollTop;
+      }
+    }
+  }, {
+    key: '_restoreScrollTop',
+    value: function _restoreScrollTop() {
+      var chatBox = this.el.querySelector('.chat__body');
+
+      if (chatBox) {
+        chatBox.scrollTop = this._scrollTop;
+      }
+    }
+  }, {
+    key: 'isMine',
+    value: function isMine(name) {
+      return name === this.data.user;
+    }
+  }, {
+    key: 'getData',
+    value: function getData() {
+      return this.data;
+    }
+  }, {
+    key: '_init',
+    value: function _init() {
+      this.startPolling();
+    }
+  }, {
+    key: 'getUsername',
+    value: function getUsername() {
+      return this.data.user;
+    }
+  }, {
+    key: 'setUserName',
+    value: function setUserName(name) {
+      this.data.user = name;
+    }
+  }, {
+    key: 'set',
+    value: function set() {
+      var messages = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+      this.data.messages.length = 0;
+      this.add(messages);
+    }
+  }, {
+    key: 'add',
+    value: function add() {
+      var messages = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+      var addOneMessageMethod = this.addOne.bind(this);
+
+      messages.forEach(addOneMessageMethod);
+    }
+  }, {
+    key: 'addOne',
+    value: function addOne(data) {
+      this.data.messages.push(this._prepareMessage(data));
+      this._scrollNewMessage();
+    }
+  }, {
+    key: '_prepareMessage',
+    value: function _prepareMessage(_ref2) {
+      var name = _ref2.name,
+          text = _ref2.text,
+          _ref2$date = _ref2.date,
+          date = _ref2$date === undefined ? Date.now() : _ref2$date;
+
+      return {
+        name: name,
+        isMine: this.isMine(name),
+        text: text,
+        date: new Date(date)
+      };
+    }
+  }, {
+    key: 'startPolling',
+    value: function startPolling() {
+      var _this = this;
+
+      this.__pollingID = setInterval(function () {
+        if (!_this.data.user) {
+          return;
+        }
+
+        _this.chatService.getMessages(function (data) {
+          if (JSON.stringify(_this.data.messages) === JSON.stringify(data.map(_this._prepareMessage.bind(_this)))) {
+            return;
+          }
+
+          _this.set(data);
+          if (_this.data.loader) _this.stopLoader();
+          _this.render();
+        });
+      }, 1000);
+    }
+  }, {
+    key: 'getLoader',
+    value: function getLoader() {
+      return this.data.loader;
+    }
+  }, {
+    key: 'stopLoader',
+    value: function stopLoader() {
+      this.data.loader = false;
+    }
+  }, {
+    key: 'stopPolling',
+    value: function stopPolling() {
+      clearInterval(this.__pollingID);
+    }
+  }]);
+
+  return Chat;
+}();
+
+exports.default = Chat;
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _index = __webpack_require__(10);
+
+var _index2 = _interopRequireDefault(_index);
+
+__webpack_require__(8);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Form = function () {
+  function Form(_ref) {
+    var el = _ref.el,
+        elClass = _ref.elClass,
+        textTitle = _ref.textTitle,
+        textPlaceholder = _ref.textPlaceholder,
+        textButton = _ref.textButton;
+
+    _classCallCheck(this, Form);
+
+    this.el = el;
+    this.elClass = elClass;
+    this.data = {
+      textTitle: textTitle,
+      textPlaceholder: textPlaceholder,
+      textButton: textButton
+    };
+
+    this._initEvents();
+  }
+
+  _createClass(Form, [{
+    key: 'render',
+    value: function render() {
+      this.el.classList.add('form', this.elClass);
+      this.el.innerHTML = (0, _index2.default)(this.data);
+      this.formEl = this.el.querySelector('form');
+
+      this._addAutoSize();
+    }
+  }, {
+    key: 'on',
+    value: function on(name, cb) {
+      this.el.addEventListener(name, cb);
+    }
+  }, {
+    key: 'trigger',
+    value: function trigger(name, data) {
+      var event = new CustomEvent(name, { detail: data });
+
+      this.el.dispatchEvent(event);
+    }
+  }, {
+    key: 'reset',
+    value: function reset() {
+      this.el.reset();
+    }
+  }, {
+    key: '_initEvents',
+    value: function _initEvents() {
+      this.el.addEventListener('submit', this._onSubmit.bind(this));
+    }
+  }, {
+    key: '_onSubmit',
+    value: function _onSubmit(event) {
+      event.preventDefault();
+      var formData = this._getFormData();
+
+      this.trigger('message', formData);
+    }
+  }, {
+    key: '_getInputs',
+    value: function _getInputs() {
+      return this.el.querySelectorAll('input, textarea');
+    }
+  }, {
+    key: '_getFormData',
+    value: function _getFormData() {
+      var formData = {};
+
+      [].concat(_toConsumableArray(this._getInputs())).forEach(function (input) {
+        formData[input.name] = {
+          value: input.value
+        };
+      });
+
+      return formData;
+    }
+  }, {
+    key: '_addAutoSize',
+    value: function _addAutoSize() {
+      var _this = this;
+
+      [].concat(_toConsumableArray(this._getInputs())).forEach(function (input) {
+        input.addEventListener('keydown', _this._initEventsAutoSize);
+      });
+    }
+  }, {
+    key: '_initEventsAutoSize',
+    value: function _initEventsAutoSize() {
+      var _this2 = this;
+
+      setTimeout(function () {
+        _this2.style.cssText = 'height: auto;';
+        _this2.style.cssText = 'height:' + _this2.scrollHeight + 'px';
+      }, 4);
+    }
+  }]);
+
+  return Form;
+}();
+
+exports.default = Form;
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _AppChat = __webpack_require__(1);
+
+var _AppChat2 = _interopRequireDefault(_AppChat);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+new _AppChat2.default({
+  el: document.getElementById('app-chat')
+});
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var ChatService = function () {
+  function ChatService(_ref) {
+    var baseUrl = _ref.baseUrl;
+
+    _classCallCheck(this, ChatService);
+
+    this.baseUrl = baseUrl;
+  }
+
+  _createClass(ChatService, [{
+    key: '_makeRequest',
+    value: function _makeRequest(cb) {
+      var type = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'GET';
+      var data = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+      var xhr = new XMLHttpRequest();
+      xhr.open(type, this.baseUrl, true);
+
+      xhr.onload = function () {
+        cb(JSON.parse(xhr.responseText));
+      };
+
+      xhr.send(JSON.stringify(data));
+    }
+  }, {
+    key: 'getMessages',
+    value: function getMessages(cb) {
+      this._makeRequest(function (messages) {
+        return cb(Object.values(messages));
+      });
+    }
+  }, {
+    key: 'sendMessage',
+    value: function sendMessage(data, cb) {
+      data.date = Date.now();
+      this._makeRequest(cb, 'POST', data);
+    }
+  }]);
+
+  return ChatService;
+}();
+
+exports.default = ChatService;
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var pug = __webpack_require__(0);
+
+function template(locals) {var pug_html = "", pug_mixins = {}, pug_interp;;var locals_for_with = (locals || {});(function (loader, messages, user) {pug_html = pug_html + "\u003Cdiv class=\"chat__header\"\u003E";
+if (!!user) {
+pug_html = pug_html + "\u003Ch1 class=\"chat__title\"\u003E" + (pug.escape(null == (pug_interp = 'Welcome to chat') ? "" : pug_interp)) + "\u003C\u002Fh1\u003E\u003Cspan class=\"chat__user\"\u003E" + (pug.escape(null == (pug_interp = user) ? "" : pug_interp)) + "\u003C\u002Fspan\u003E";
+}
+pug_html = pug_html + "\u003C\u002Fdiv\u003E";
+if (!!messages.length) {
+pug_html = pug_html + "\u003Cdiv class=\"chat__body\"\u003E\u003Ch2 class=\"visually-hidden\"\u003E" + (pug.escape(null == (pug_interp = 'Chat messages') ? "" : pug_interp)) + "\u003C\u002Fh2\u003E";
+// iterate messages
+;(function(){
+  var $$obj = messages;
+  if ('number' == typeof $$obj.length) {
+      for (var pug_index0 = 0, $$l = $$obj.length; pug_index0 < $$l; pug_index0++) {
+        var message = $$obj[pug_index0];
+pug_html = pug_html + "\u003Cdiv" + (pug.attr("class", pug.classes(["message",message.isMine ? 'message--user' : 'message--other'], [false,true]), false, true)) + "\u003E\u003Cdiv class=\"message__box\"\u003E";
+if (!message.isMine) {
+pug_html = pug_html + "\u003Cspan class=\"message__name\"\u003E" + (pug.escape(null == (pug_interp = message.name) ? "" : pug_interp)) + "\u003C\u002Fspan\u003E";
+}
+pug_html = pug_html + "\u003Cp class=\"message__text\"\u003E" + (pug.escape(null == (pug_interp = message.text) ? "" : pug_interp)) + "\u003C\u002Fp\u003E\u003Ctime" + (" class=\"message__time\""+pug.attr("datetime", message.date, true, true)) + "\u003E" + (pug.escape(null == (pug_interp = `${('0' + (message.date.getHours())).slice(-2)}:${('0' + (message.date.getMinutes())).slice(-2)}`) ? "" : pug_interp)) + "\u003Cspan\u003E" + (pug.escape(null == (pug_interp = `${('0' + message.date.getDate()).slice(-2)}-${('0' + (message.date.getMonth() + 1)).slice(-2)}-${message.date.getFullYear()}`) ? "" : pug_interp)) + "\u003C\u002Fspan\u003E\u003C\u002Ftime\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E";
+      }
+  } else {
+    var $$l = 0;
+    for (var pug_index0 in $$obj) {
+      $$l++;
+      var message = $$obj[pug_index0];
+pug_html = pug_html + "\u003Cdiv" + (pug.attr("class", pug.classes(["message",message.isMine ? 'message--user' : 'message--other'], [false,true]), false, true)) + "\u003E\u003Cdiv class=\"message__box\"\u003E";
+if (!message.isMine) {
+pug_html = pug_html + "\u003Cspan class=\"message__name\"\u003E" + (pug.escape(null == (pug_interp = message.name) ? "" : pug_interp)) + "\u003C\u002Fspan\u003E";
+}
+pug_html = pug_html + "\u003Cp class=\"message__text\"\u003E" + (pug.escape(null == (pug_interp = message.text) ? "" : pug_interp)) + "\u003C\u002Fp\u003E\u003Ctime" + (" class=\"message__time\""+pug.attr("datetime", message.date, true, true)) + "\u003E" + (pug.escape(null == (pug_interp = `${('0' + (message.date.getHours())).slice(-2)}:${('0' + (message.date.getMinutes())).slice(-2)}`) ? "" : pug_interp)) + "\u003Cspan\u003E" + (pug.escape(null == (pug_interp = `${('0' + message.date.getDate()).slice(-2)}-${('0' + (message.date.getMonth() + 1)).slice(-2)}-${message.date.getFullYear()}`) ? "" : pug_interp)) + "\u003C\u002Fspan\u003E\u003C\u002Ftime\u003E\u003C\u002Fdiv\u003E\u003C\u002Fdiv\u003E";
+    }
+  }
+}).call(this);
+
+pug_html = pug_html + "\u003C\u002Fdiv\u003E";
+}
+if (!!loader) {
+pug_html = pug_html + "\u003Cdiv class=\"chat__loader\"\u003E\u003C\u002Fdiv\u003E";
+}}.call(this,"loader" in locals_for_with?locals_for_with.loader:typeof loader!=="undefined"?loader:undefined,"messages" in locals_for_with?locals_for_with.messages:typeof messages!=="undefined"?messages:undefined,"user" in locals_for_with?locals_for_with.user:typeof user!=="undefined"?user:undefined));;return pug_html;};
+module.exports = template;
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var pug = __webpack_require__(0);
+
+function template(locals) {var pug_html = "", pug_mixins = {}, pug_interp;;var locals_for_with = (locals || {});(function (textButton, textPlaceholder, textTitle) {if (!!textTitle) {
+pug_html = pug_html + "\u003Ch3 class=\"form__title\"\u003E" + (pug.escape(null == (pug_interp = textTitle) ? "" : pug_interp)) + "\u003C\u002Fh3\u003E";
+}
+pug_html = pug_html + "\u003Cdiv class=\"form__textarea-wrap\"\u003E\u003Ctextarea" + (" class=\"form__textarea\""+" required autofocus name=\"message\""+pug.attr("placeholder", textPlaceholder, true, true)+" rows=\"1\"") + "\u003E\u003C\u002Ftextarea\u003E\u003Cbutton class=\"button form__button\" value=\"submit\" type=\"submit\"\u003E" + (pug.escape(null == (pug_interp = textButton) ? "" : pug_interp)) + "\u003C\u002Fbutton\u003E\u003C\u002Fdiv\u003E";}.call(this,"textButton" in locals_for_with?locals_for_with.textButton:typeof textButton!=="undefined"?textButton:undefined,"textPlaceholder" in locals_for_with?locals_for_with.textPlaceholder:typeof textPlaceholder!=="undefined"?textPlaceholder:undefined,"textTitle" in locals_for_with?locals_for_with.textTitle:typeof textTitle!=="undefined"?textTitle:undefined));;return pug_html;};
+module.exports = template;
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports) {
+
+/* (ignored) */
+
+/***/ })
+/******/ ]);

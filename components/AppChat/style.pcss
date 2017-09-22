@@ -1,36 +1,77 @@
+:root {
+  --color-default: #1d2129;
+  --color-primary: #0084ff;
+  --color-border: #e4e4e4;
+  --color-border_focus: #9b9b9b;
+  --color-grey: #f1f0f0;
+  --color-white: #fff;
+}
+
 html {
   font-family: system-ui;
   font-size: 18px;
   line-height: 1.6;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
+  margin: 0;
   background-color: #fff;
   color: #1d2129;
 }
 
-h1 {}
-
-h2 {}
-
-h3 {}
-
-h4 {}
-
-h5 {}
-
-h6 {}
-
-p {}
-
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-#app {
+a {
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.app-chat {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100vh;
   max-height: 100vh;
+
+  &__form {
+    position: absolute;
+    right: 0;
+    left: 0;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 90%;
+    justify-content: center;
+    min-width: 50%;
+    height: 100vh;
+    max-height: 100vh;
+    z-index: 2;
+    transition: all 0.1s ease;
+    background-color: #fff;
+
+    & .form__title {
+      align-self: end;
+    }
+
+    & .form__textarea-wrap {
+      align-self: start;
+    }
+  }
 }

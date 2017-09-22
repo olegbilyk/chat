@@ -1,22 +1,20 @@
 {
   "name": "Chat",
   "version": "1.0.0",
-  "description": "",
   "main": "app.js",
   "scripts": {
     "start": "./node_modules/.bin/webpack-dev-server --hot --inline",
     "build": "./node_modules/.bin/webpack",
-    "build:prod": "NODE_ENV='production' ./node_modules/.bin/webpack -p",
+    "build:prod": "NODE_ENV='production' ./node_modules/.bin/webpack --optimize-minimize -p",
     "build_watch": "./node_modules/.bin/webpack -w",
     "build_watch:prod": "NODE_ENV='productio./node_modules/.bin/webpack -p -w",
-    "eslint": "./node_modules/.bin/eslint ./src/**/*.js",
-    "stylelint": "./node_modules/.bin/stylelint ./src/**/*.pcss"
+    "eslint": "./node_modules/.bin/eslint ./components/**/*.js",
+    "stylelint": "./node_modules/.bin/stylelint ./components/**/*.pcss"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/olegbilyk/chat.git"
   },
-  "keywords": [],
   "author": "Oleg Bilyk",
   "license": "MIT",
   "bugs": {
@@ -24,11 +22,9 @@
   },
   "homepage": "https://githaub.com/olegbilyk/chat#readme",
   "devDependencies": {
-    "autoprefixer-loader": "^3.2.0",
     "babel-core": "^6.25.0",
     "babel-loader": "^6.4.1",
     "babel-preset-env": "^1.6.0",
-    "babel-preset-es2015": "^6.24.1",
     "css-loader": "^0.27.3",
     "eslint": "^3.19.0",
     "eslint-config-standard": "^10.2.1",
@@ -40,6 +36,7 @@
     "extract-text-webpack-plugin": "^2.1.2",
     "postcss": "^5.2.17",
     "postcss-cssnext": "^2.11.0",
+    "postcss-inline-svg": "^3.0.0",
     "postcss-load-config": "^1.2.0",
     "postcss-loader": "^1.3.3",
     "pug": "^2.0.0-rc.3",
@@ -47,10 +44,12 @@
     "style-loader": "^0.16.1",
     "stylelint": "^7.13.0",
     "stylelint-config-standard": "^16.0.0",
+    "uglify-js": "^3.1.1",
+    "uglifyjs-webpack-plugin": "^0.4.6",
     "webpack": "^2.7.0",
     "webpack-dev-server": "^2.6.1"
   },
-  "dependencies": {
-    "normalize.css": "^7.0.0"
-  }
+  "browserslist": [
+    "last 1 versions"
+  ]
 }

@@ -1,6 +1,7 @@
 const webpack = require('webpack')
 const path = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 const develop = process.env.NODE_ENV !== 'production'
 
 module.exports = {
@@ -11,7 +12,6 @@ module.exports = {
   },
 
   output: {
-    // path: path.resolve(__dirname, './dist'),
     filename: 'bundle.js'
   },
 
@@ -19,12 +19,6 @@ module.exports = {
 
   module: {
     rules: [
-      // {
-      //   test: /\.js$/,
-      //   enforce: 'pre',
-      //   exclude: /node_modules/,
-      //   loader: 'eslint-loader'
-      // },
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -38,13 +32,6 @@ module.exports = {
         test: /\.pug$/,
         exclude: /node_modules/,
         loader: 'pug-loader'
-      },
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          'css-loader'
-        ]
       },
       {
         test: /\.pcss$/,

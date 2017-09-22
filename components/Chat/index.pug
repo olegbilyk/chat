@@ -1,13 +1,17 @@
 div.chat__header
-  h3.title='Добро пожаловать ' + user
-div.chat__body
-  //if !messages.length
-    h3.no-message No messages here yet...
-  each message in messages
-    div.message(class=message.isMine ? 'message_user' : 'message_left-avatar')
-      //div.message__avatar
-      //  img(src=message.avatar alt='name of user')
-      div.message__box
-        //span.message__name=message.name
-        p.message__text=message.text
-        span.message__time=message.date.toTimeString().split(' ')[0]
+  if !!user
+    h1.chat__title='Welcome to chat'
+    span.chat__user=user
+if !!messages.length
+  div.chat__body
+    h2.visually-hidden='Chat messages'
+    each message in messages
+      div.message(class=message.isMine ? 'message--user' : 'message--other')
+        div.message__box
+          if !message.isMine
+            span.message__name=message.name
+          p.message__text=message.text
+          time.message__time(datetime=message.date)=`${('0' + (message.date.getHours())).slice(-2)}:${('0' + (message.date.getMinutes())).slice(-2)}`
+            span=`${('0' + message.date.getDate()).slice(-2)}-${('0' + (message.date.getMonth() + 1)).slice(-2)}-${message.date.getFullYear()}`
+if !!loader
+  div.chat__loader

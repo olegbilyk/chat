@@ -1,6 +1,11 @@
 import Chat from '../Chat'
 import Form from '../Form'
+import ChatService from '../../modules/СhatService'
 import './style.pcss'
+
+const chatService = new ChatService({
+  baseUrl: 'https://oleg-bilyk-js-chat.firebaseio.com/messages.json'
+})
 
 export default class AppChat {
   constructor ({el}) {
@@ -12,49 +17,63 @@ export default class AppChat {
   }
 
   render () {
-    this.el.appendChild(this.chat.el)
-    this.el.appendChild(this.form.el)
-    this.chat.render()
-    this.form.render()
+    this.el.appendChild(this.formUser.el)
+    this.formUser.render()
   }
 
   _createComponents () {
+    this.formUser = new Form({
+      el: document.createElement('form'),
+      textTitle: 'Welcome to chat',
+      elClass: 'app-chat__form',
+      textPlaceholder: 'Enter your name...',
+      textButton: 'Submit'
+    })
+
     this.chat = new Chat({
       el: document.createElement('div'),
+      chatService,
       data: {
-        user: 'Oleg',
-        messages: []
+        user: null,
+        messages: [],
+        loader: true
       }
     })
 
-    this.form = new Form({
-      el: document.createElement('div')
+    this.formChat = new Form({
+      el: document.createElement('form'),
+      elClass: 'form--chat',
+      textPlaceholder: 'Write a message...',
+      textButton: 'Send'
     })
   }
 
   _initMediate () {
-    // this.el.addEventListener('submit', this._onSubmit.bind(this))
-    this.form.on('message', (event) => {
-    // this.el.addEventListener('message', (event) => {
+    this.formUser.on('message', (event) => {
       let data = event.detail
 
-      this.chat.addMessage({
-        text: data.message.value
-      })
+      this.chat.setUserName(data.message.value)
+      this.formUser.el.classList.add('form--hidden')
+
+      this.el.appendChild(this.chat.el)
+      this.el.appendChild(this.formChat.el)
       this.chat.render()
-      this.form.reset()
+      this.formChat.render()
     })
 
-    // this.form.onSubmit((data) => {
-    //   this.chat.addMessage({
-    //     text: data.message.value
-    //   })
-    //   this.chat.render()
-    //   this.form.reset()
-    // })
-  }
+    this.formChat.on('message', (event) => {
+      let data = event.detail
 
-  addMessage (data) {
-    this.chat.addMessage(data)
+      data = {
+        text: data.message.value,
+        name: this.chat.getUsername()
+      }
+
+      chatService.sendMessage(data, () => null)
+
+      this.chat.addOne(data)
+      this.chat.render()
+      this.formChat.reset()
+    })
   }
 }

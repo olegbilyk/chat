@@ -1,45 +1,46 @@
-# webpack2-js-boilerplate
-Webpack 2 setup for fast start a new JavaScript project
+# Chat
+#### My first training javascript project
 
-[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](http://standardjs.com)
+## Demo
+[Demo](https://olegbilyk.github.io/chat/)
 
-## Installation
+### Installation
 
 ```
 $ npm i
 ```
 
-## Running in webpack dev server
+### Running in webpack dev server
 
 ```
 $ npm run start
 ```
 
-## Build
+### Build
 
 ```
 $ npm run build
 ```
 
-## Build (production)
+### Build (production)
 
 ```
 $ npm run build:prod
 ```
 
-## Build watch files
+### Build watch files
 
 ```
 $ npm run build_watch
 ```
 
-## Build watch files (production)
+### Build watch files (production)
 
 ```
 $ npm run build_watch:prod
 ```
 
-## Style Linting
+### Style Linting
 
 For style linting I'm using [stylelint-config-standard](https://github.com/stylelint/stylelint-config-standard)
 
@@ -47,7 +48,7 @@ For style linting I'm using [stylelint-config-standard](https://github.com/style
 $ npm run stylelint
 ```
 
-## JavaScript Linting
+### JavaScript Linting
 
 For JavaScript linting I'm using [eslint-config-standard](https://github.com/feross/eslint-config-standard)
 
@@ -58,4 +59,3 @@ $ npm run eslint
 # License
 
 [MIT](License.md)
-[License](https://github.com/olegbilyk/webpack2-js-boilerplate/blob/develop/LICENSE)
