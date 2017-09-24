@@ -4,9 +4,13 @@ optgroup,
 select,
 textarea {
   font-family: sans-serif;
-  font-size: 100%;
+  font-size: 85%;
   line-height: 1.15;
   margin: 0;
+
+  @media (min-width: 768px) {
+    font-size: 100%;
+  }
 }
 
 .form {
@@ -29,7 +33,7 @@ textarea {
     flex-grow: 1;
     min-height: 42px;
     max-height: 150px;
-    padding: 10px 130px 10px 19px;
+    padding: 10px 80px 10px 19px;
     border-radius: 26px;
     resize: vertical;
     overflow: auto;
@@ -42,6 +46,10 @@ textarea {
       outline: none;
       border: 1px solid var(--color-border_focus);
     }
+
+    @media (min-width: 768px) {
+      padding-right: 130px;
+    }
   }
 
   &__button {
@@ -49,8 +57,7 @@ textarea {
     top: 50%;
     right: 0;
     transform: translateY(-50%);
-    margin-right: 23px;
-    margin-left: 23px;
+    margin-right: 10px;
     transition: all 0.2s ease;
     border: none;
     outline: none;
@@ -72,6 +79,10 @@ textarea {
 
     &:active {
       opacity: 0.6;
+    }
+
+    @media (min-width: 768px) {
+      margin-right: 23px;
     }
   }
 }
